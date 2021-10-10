@@ -1,0 +1,36 @@
+{
+  "name": "discord",
+  "version": "1.0.0",
+  "description": "Elektron++ Discord Bot and related stuff ",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "standard && npx jest",
+    "lint:check": "npx standard",
+    "lint:fix": "npx standard --fix",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElektronPlus/discord.git"
+  },
+  "keywords": [
+    "school"
+  ],
+  "author": "ElektronPlus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ElektronPlus/discord/issues"
+  },
+  "homepage": "https://github.com/ElektronPlus/discord#readme",
+  "devDependencies": {
+    "ts-standard": "^10.0.0",
+    "typescript": "^4.4.3"
+  },
+  "ts-standard": {
+    "project": "./tsconfig.json"
+  },
+  "dependencies": {
+    "discord.js": "^13.2.0",
+    "dotenv": "^10.0.0"
+  }
+}
