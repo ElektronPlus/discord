@@ -10,3 +10,5 @@
 3. create [dotenv file](https://www.npmjs.com/package/dotenv) with DISCORD_TOKEN
     - echo `DISCORD_TOKEN="Discord Bot Token" > .env`
 4. install required dependencies with `npm install`
+
+- [discord.js Guide](https://discordjs.guide)
