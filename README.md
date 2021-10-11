@@ -1,8 +1,8 @@
 <div align="center">
-  <h2><a href="https://github.com/ElektronPlus">🐱‍💻 Elektron++</a> Discord Bot and related stuff</h2>
+  <h1><a href="https://github.com/ElektronPlus">🤖 Elektron++</a> Discord Bot and related stuff</h2>
 </div>
 
-# Contributing
+## Contributing
 1. clone repository
     - `gh repo clone ElektronPlus/discord`
     - `git clone https://github.com/ElektronPlus/discord.git`
