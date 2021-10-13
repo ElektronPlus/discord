@@ -18,7 +18,7 @@ client.once('ready', () => {
   const guild = client.guilds.cache.get(guildId)
   let commands
 
-  if (guild) {
+  if (guild != null) {
     commands = guild.commands
   } else {
     commands = client.application?.commands
@@ -27,7 +27,7 @@ client.once('ready', () => {
   for (const command of slashCommands) {
     commands?.create({
       name: command.name,
-      description: command.description,
+      description: command.description
     })
   }
 })
