@@ -10,7 +10,7 @@ const client = new Discord.Client({
 })
 
 client.once('ready', () => {
-  log.info('Bot is ready.')
+  log.info('Client: Ready')
 
   // While developing slashCommands it's better to use guild, as it's refresh instantly (https://youtu.be/pXehoXnFxPM?t=101)
 
@@ -29,6 +29,7 @@ client.once('ready', () => {
       name: command.name,
       description: command.description
     })
+    log.info(`Command created: ${command.name} - ${command.description}`)
   }
 })
 
@@ -36,6 +37,7 @@ client.on('messageCreate', message => {
   for (const trigger of triggers) {
     if (message.content === trigger.name) {
       message.channel.send(trigger.reply)
+      log.info(`Triggered: ${trigger.name} - ${Object.entries(message)}`)
     }
   }
 })
@@ -49,6 +51,7 @@ client.on('interactionCreate', async (interaction) => {
   for (const command of slashCommands) {
     if (interaction.commandName === command.name) {
       interaction.reply(command.reply)
+      log.info(`Replied to interaction: ${Object.entries(interaction)}`)
     }
   }
 })
