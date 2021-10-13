@@ -2,12 +2,13 @@
   "name": "discord",
   "version": "1.0.0",
   "description": "Elektron++ Discord Bot and related stuff ",
-  "main": "dist/main.js",
+  "main": "src/main.ts",
   "scripts": {
     "test": "standard && npx jest",
     "lint:check": "ts-standard",
     "lint:fix": "ts-standard --fix",
     "build": "tsc"
+    "dev": "npx nodemon src/main.ts
   },
   "repository": {
     "type": "git",
