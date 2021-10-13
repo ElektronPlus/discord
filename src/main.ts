@@ -23,10 +23,6 @@ client.once('ready', () => {
   } else {
     commands = client.application?.commands
   }
-  commands?.create({
-    name: 'ping',
-    description: 'pong',
-  })
 
   for (const command of slashCommands) {
     commands?.create({
