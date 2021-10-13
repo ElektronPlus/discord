@@ -1,35 +1,9 @@
 import 'dotenv/config'
 import Discord from 'discord.js'
 import createLogger from './logger'
+import { slashCommands, triggers } from './commands'
 
 const log = createLogger()
-
-const slashCommands = [
-  {
-    name: 'github',
-    description: '🤖 Sprawdź kod źródłowy bota, zasugeruj swoje zmiany lub zgłoś błąd',
-    reply: {
-      content: 'https://github.com/ElektronPlus/discord',
-      ephemeral: true
-    }
-  },
-  {
-    name: 'numerek',
-    description: '📅 Sprawdź, czy dzisiaj masz szczęście! Wyświetla szczęsliwy numerek',
-    reply: {
-      content: '',
-      ephemeral: true
-    }
-  },
-  {
-    name: 'aplikacja',
-    description: '📲 Pobierz aplikację Eletron++ na swój telefon',
-    reply: {
-      content: 'https://play.google.com/store/apps/details?id=pl.krystian_wybranowski.elektronPlus',
-      ephemeral: true
-    }
-  }
-]
 
 const client = new Discord.Client({
   intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES]
@@ -63,8 +37,10 @@ client.once('ready', () => {
 })
 
 client.on('messageCreate', message => {
-  if (message.content === '+1') {
-    message.channel.send('Oj byczku **+1**')
+  for (const trigger of triggers) {
+    if (message.content === trigger.name) {
+      message.channel.send(trigger.reply)
+    }
   }
 })
 
