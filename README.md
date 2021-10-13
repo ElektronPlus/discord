@@ -12,6 +12,5 @@
 2. `cd discord/`
 3. create [dotenv file](https://www.npmjs.com/package/dotenv) with DISCORD_TOKEN
     - echo `DISCORD_TOKEN="Discord Bot Token" > .env`
-4. install required dependencies with `npm install`
-5 you can use [📦 nodemon](https://www.npmjs.com/package/nodemon) to instantly see results while developing
+4. install required dependencies with `npm install` you can use [📦 nodemon](https://www.npmjs.com/package/nodemon) to instantly see results while developing
     - `npm run dev`
