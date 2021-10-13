@@ -17,7 +17,16 @@ const slashCommands = [
     name: 'numerek',
     description: '📅 Sprawdź, czy dzisiaj masz szczęście! Wyświetla szczęsliwy numerek',
     reply: {
-      content: ''
+      content: '',
+      ephemeral: true
+    }
+  },
+  {
+    name: 'aplikacja',
+    description: '📲 Pobierz aplikację Eletron++ na swój telefon',
+    reply: {
+      content: 'https://play.google.com/store/apps/details?id=pl.krystian_wybranowski.elektronPlus',
+      ephemeral: true
     }
   }
 ]
