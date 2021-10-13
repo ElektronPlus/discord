@@ -5,7 +5,7 @@
 - [📔 **discord.js** docs](https://discord.js.org/#/docs)
 - [:octocat: **Wybranowsky**/Elektron-Discord-Bot](https://github.com/Wybranowsky/Elektron-Discord-Bot) (old repository)
 
-## Contributing
+## Developing
 1. clone repository
     - `gh repo clone ElektronPlus/discord`
     - `git clone https://github.com/ElektronPlus/discord.git`
