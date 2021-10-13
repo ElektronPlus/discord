@@ -12,7 +12,7 @@ const client = new Discord.Client({
 client.once('ready', () => {
   log.info('Client: Ready')
 
-  // Guild commands update instantly. We recommend you use guild commands for quick testing, and global commands when they're ready for public use. (https://canary.discord.com/developers/docs/interactions/slash-commands#registering-a-command q)
+  // Guild commands update instantly. We recommend you use guild commands for quick testing, and global commands when they're ready for public use. (https://canary.discord.com/developers/docs/interactions/slash-commands#registering-a-command)
 
   const guildId = '896713182326968351'
   const guild = client.guilds.cache.get(guildId)
