@@ -7,8 +7,8 @@
     "test": "standard && npx jest",
     "lint:check": "ts-standard",
     "lint:fix": "ts-standard --fix",
-    "build": "tsc"
-    "dev": "npx nodemon src/main.ts
+    "build": "tsc",
+    "dev": "npx nodemon src/main.ts"
   },
   "repository": {
     "type": "git",
