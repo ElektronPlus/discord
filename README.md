@@ -15,3 +15,7 @@
 4. install required dependencies with `npm install`
 5. you can use [📦 nodemon](https://www.npmjs.com/package/nodemon) to instantly see results while developing
     - `npm run dev`
+
+## Info
+- bot requires `bot` and `applications.commands` scopes
+- after adding a new /command, you might get error `Invalid interaction application command`. Just wait 1 hour for Discord to refresh global commands

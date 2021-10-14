@@ -1,9 +1,10 @@
-import 'dotenv/config'
-import Discord from 'discord.js'
-import createLogger from './logger'
-import { slashCommands, triggers } from './commands'
-import getRandomActivity from './activity'
+import createLogger from './utils/logger';
 import { config } from './config'
+
+import Discord from 'discord.js'
+import { createGuildSlashCommands, replyToSlashCommand } from './core/commands'
+import { replyToTrigger } from './core/triggers'
+import activitySetter from './core/activities'
 
 const log = createLogger()
 
@@ -14,56 +15,21 @@ const client = new Discord.Client({
 client.once('ready', () => {
   log.info('Client: Ready')
 
-  if (config.activity.display) {
-    setInterval(() => {
-      client.user?.setActivity(getRandomActivity(), {type: 'LISTENING'})
-    }, config.activity.interval)
+  if (client.user) {
+    activitySetter(client.user)
   }
 
-  // Guild commands update instantly. We recommend you use guild commands for quick testing, and global commands when they're ready for public use. (https://canary.discord.com/developers/docs/interactions/slash-commands#registering-a-command)
+  /** Create slash commands for every guild. This doesn't create global commands. */
+  client.guilds.cache.forEach(guild => createGuildSlashCommands(guild))
 
-  // const guildId = '896713182326968351'
-  // const guild = client.guilds.cache.get(guildId)
-  // let commands
-
-  // if (guild != null) {
-  //   commands = guild.commands
-  // } else {
-  //   commands = client.application?.commands
-  // }
-
-  const commands = client.application?.commands
-
-  for (const command of slashCommands) {
-    commands?.create({
-      name: command.name,
-      description: command.description
-    })
-    log.info(`Command created: ${command.name} - ${command.description}`)
-  }
 })
 
-client.on('messageCreate', message => {
-  for (const trigger of triggers) {
-    if (message.content === trigger.name) {
-      message.channel.send(trigger.reply)
-      log.info(`Triggered: ${trigger.name} - ${Object.entries(message)}`)
-    }
-  }
+client.on('messageCreate', async (message) => {
+  replyToTrigger(message)
 })
 
 client.on('interactionCreate', async (interaction) => {
-  // Make sure that interaction is a command
-  if (!interaction.isCommand()) {
-    return
-  }
-
-  for (const command of slashCommands) {
-    if (interaction.commandName === command.name) {
-      interaction.reply(command.reply)
-      log.info(`Replied to interaction: ${Object.entries(interaction)}`)
-    }
-  }
+  replyToSlashCommand(interaction)
 })
 
-client.login(process.env.DISCORD_TOKEN)
+client.login(config.token)
