@@ -1,5 +1,6 @@
 import createLogger from '../utils/logger'
 import { config } from '../config'
+import { randomItem } from '../utils/utils'
 
 import { ActivityOptions, ClientUser } from 'discord.js'
 
@@ -8,8 +9,7 @@ const log = createLogger()
 export function getRandomActivity (): ActivityOptions {
   log.info('Generated a random bot status.')
 
-  const randomItem = config.activity.items[Math.floor(Math.random() * config.activity.items.length)]
-  return { name: `lekcji ${randomItem}`, type: 'LISTENING' }
+  return { name: `lekcji ${randomItem(config.activity.items)}`, type: 'LISTENING' }
 }
 
 export default async function activitySetter (user: ClientUser): Promise<void> {

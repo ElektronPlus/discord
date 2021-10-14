@@ -75,7 +75,14 @@ export const config = {
   triggers: [
     {
       name: '+1',
-      reply: 'Oj byczku **+1**'
+      reply: [
+        'oj byczku **+1**',
+        'o kurde **+1**',
+        'proste że **+1**',
+        '**+1** bo masz rację',
+        '**+1** ode mnie',
+        'popieram **+1**'
+      ]
     }
   ]
 }
