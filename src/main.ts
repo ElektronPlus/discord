@@ -2,6 +2,7 @@ import 'dotenv/config'
 import Discord from 'discord.js'
 import createLogger from './logger'
 import { slashCommands, triggers } from './commands'
+import getRandomActivity from './activity'
 
 const log = createLogger()
 
@@ -12,17 +13,23 @@ const client = new Discord.Client({
 client.once('ready', () => {
   log.info('Client: Ready')
 
+  setInterval(() => {
+    client.user?.setActivity(getRandomActivity(), {type: 'LISTENING'})
+  }, 1000000)
+
   // Guild commands update instantly. We recommend you use guild commands for quick testing, and global commands when they're ready for public use. (https://canary.discord.com/developers/docs/interactions/slash-commands#registering-a-command)
 
-  const guildId = '896713182326968351'
-  const guild = client.guilds.cache.get(guildId)
-  let commands
+  // const guildId = '896713182326968351'
+  // const guild = client.guilds.cache.get(guildId)
+  // let commands
 
-  if (guild != null) {
-    commands = guild.commands
-  } else {
-    commands = client.application?.commands
-  }
+  // if (guild != null) {
+  //   commands = guild.commands
+  // } else {
+  //   commands = client.application?.commands
+  // }
+
+  const commands = client.application?.commands
 
   for (const command of slashCommands) {
     commands?.create({
@@ -48,10 +55,12 @@ client.on('interactionCreate', async (interaction) => {
     return
   }
 
+  log.info(interaction.id)
+
   for (const command of slashCommands) {
     if (interaction.commandName === command.name) {
       interaction.reply(command.reply)
-      log.info(`Replied to interaction: ${Object.entries(interaction)}`)
+      // log.info(`Replied to interaction: ${Object.entries(interaction)}`)
     }
   }
 })
