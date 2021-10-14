@@ -3,6 +3,7 @@ import Discord from 'discord.js'
 import createLogger from './logger'
 import { slashCommands, triggers } from './commands'
 import getRandomActivity from './activity'
+import { config } from './config'
 
 const log = createLogger()
 
@@ -13,9 +14,11 @@ const client = new Discord.Client({
 client.once('ready', () => {
   log.info('Client: Ready')
 
-  setInterval(() => {
-    client.user?.setActivity(getRandomActivity(), {type: 'LISTENING'})
-  }, 1000000)
+  if (config.activity.display) {
+    setInterval(() => {
+      client.user?.setActivity(getRandomActivity(), {type: 'LISTENING'})
+    }, config.activity.interval)
+  }
 
   // Guild commands update instantly. We recommend you use guild commands for quick testing, and global commands when they're ready for public use. (https://canary.discord.com/developers/docs/interactions/slash-commands#registering-a-command)
 
