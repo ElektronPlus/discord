@@ -12,7 +12,6 @@ export async function replyToTrigger (message: Message): Promise<void> {
     if (message.content === trigger.name) {
       message.channel.send(trigger.reply)
       log.info(`[${message.guild?.name}] Replied to trigger.`)
-      log.info(message)
     }
   }
 }
