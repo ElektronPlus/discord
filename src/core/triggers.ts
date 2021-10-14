@@ -7,7 +7,7 @@ const log = createLogger()
 /**
  * Replies to trigger specified in config.
  */
-export async function replyToTrigger(message: Message): Promise<void> {
+export async function replyToTrigger (message: Message): Promise<void> {
   for (const trigger of config.triggers) {
     if (message.content === trigger.name) {
       message.channel.send(trigger.reply)

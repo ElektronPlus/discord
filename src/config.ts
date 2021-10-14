@@ -1,4 +1,9 @@
 import 'dotenv/config'
+import { getLuckyNumberInfo } from './api/elektronplus'
+
+export const api = {
+  elektronplus: 'https://elektronplusplus-76445.firebaseio.com/.json'
+}
 
 export const config = {
   displayFunnyActivity: true,
@@ -38,7 +43,7 @@ export const config = {
       name: 'numerek',
       description: '📅 Sprawdź, czy masz dziś szczęście! Wyświetla szczęsliwy numerek',
       reply: {
-        content: '',
+        content: await getLuckyNumberInfo(),
         ephemeral: true
       }
     },
@@ -72,5 +77,5 @@ export const config = {
       name: '+1',
       reply: 'Oj byczku **+1**'
     }
-  ],
+  ]
 }

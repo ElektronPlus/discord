@@ -2,8 +2,10 @@
   "name": "discord",
   "version": "1.0.0",
   "description": "Elektron++ Discord Bot and related stuff ",
-  "main": "src/main.ts",
+  "main": "dist/main.js",
+  "type": "module",
   "scripts": {
+    "start": "node --experimental-specifier-resolution=node .",
     "test": "standard && npx jest",
     "lint:check": "ts-standard",
     "lint:fix": "ts-standard --fix",
@@ -24,6 +26,7 @@
   },
   "homepage": "https://github.com/ElektronPlus/discord#readme",
   "devDependencies": {
+    "@types/node-fetch": "^3.0.3",
     "@types/pino": "^6.3.11",
     "pino-pretty": "^7.0.1",
     "ts-standard": "^10.0.0",
@@ -35,6 +38,7 @@
   "dependencies": {
     "discord.js": "^13.2.0",
     "dotenv": "^10.0.0",
+    "node-fetch": "^3.0.0",
     "pino": "^6.13.3"
   }
 }

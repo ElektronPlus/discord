@@ -1,4 +1,4 @@
-import createLogger from './utils/logger';
+import createLogger from './utils/logger'
 import { config } from './config'
 
 import Discord from 'discord.js'
@@ -12,16 +12,15 @@ const client = new Discord.Client({
   intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES]
 })
 
-client.once('ready', () => {
+client.once('ready', async () => {
   log.info('Client: Ready')
 
-  if (client.user) {
+  if (client.user != null) {
     activitySetter(client.user)
   }
 
   /** Create slash commands for every guild. This doesn't create global commands. */
-  client.guilds.cache.forEach(guild => createGuildSlashCommands(guild))
-
+  client.guilds.cache.forEach(async guild => await createGuildSlashCommands(guild))
 })
 
 client.on('messageCreate', async (message) => {
