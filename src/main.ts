@@ -55,8 +55,6 @@ client.on('interactionCreate', async (interaction) => {
     return
   }
 
-  log.info(interaction.id)
-
   for (const command of slashCommands) {
     if (interaction.commandName === command.name) {
       interaction.reply(command.reply)
