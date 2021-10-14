@@ -18,4 +18,3 @@
 
 ## Info
 - bot requires `bot` and `applications.commands` scopes
-- after adding a new /command, you might get error `Invalid interaction application command`. Just wait 1 hour for Discord to refresh global commands
