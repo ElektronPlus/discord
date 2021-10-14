@@ -9,7 +9,7 @@ export const slashCommands = [
   },
   {
     name: 'numerek',
-    description: '📅 Sprawdź, czy dzisiaj masz szczęście! Wyświetla szczęsliwy numerek',
+    description: '📅 Sprawdź, czy masz dziś szczęście! Wyświetla szczęsliwy numerek',
     reply: {
       content: '',
       ephemeral: true
@@ -17,7 +17,7 @@ export const slashCommands = [
   },
   {
     name: 'aplikacja',
-    description: '📲 Pobierz aplikację Eletron++ na swój telefon',
+    description: '📲 Pobierz aplikację Elektron++ na swój telefon',
     reply: {
       content: 'https://play.google.com/store/apps/details?id=pl.krystian_wybranowski.elektronPlus',
       ephemeral: true
