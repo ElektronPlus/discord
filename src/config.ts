@@ -12,22 +12,9 @@ export const config = {
     display: true,
     interval: 1000000,
     items: [
-      'matematyki',
-      'biologi',
-      'programowania',
-      'polskiego',
-      'angielskiego',
-      'niemieckiego',
-      'geografii',
-      'baz danych',
-      'religi',
-      'fizyki',
-      'histori',
-      'pojazdów samochodowych',
-      'diagnostyki',
-      'chemii',
-      'informatyki',
-      'SEO'
+      'historii XX i XXI w.',
+      'wychowania do cnót niewieścich',
+      'katechezy'
     ]
   },
   slashCommands: [
