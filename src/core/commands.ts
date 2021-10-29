@@ -1,37 +1,37 @@
 import createLogger from '../utils/logger'
 
-import Discord from 'discord.js';
+import Discord from 'discord.js'
 import { getLuckyNumberInfo } from '../api/elektronplus'
 
 const log = createLogger()
 
 const slashCommands: Discord.ChatInputApplicationCommandData[] = [
-    {
-      name: 'github',
-      description: '🤖 Sprawdź kod źródłowy bota, zasugeruj swoje zmiany lub zgłoś błąd',
-    },
-    {
-      name: 'numerek',
-      description: '📅 Sprawdź, czy masz dziś szczęście! Wyświetla szczęsliwy numerek',
-    },
-    {
-      name: 'aplikacja',
-      description: '📲 Pobierz aplikację Elektron++ na swój telefon',
-    },
-    {
-      name: 'spolecznosciowy',
-      description: '✨ Dołącz do serwera społecznościowego szkoły',
-    },
-    {
-      name: 'facebook',
-      description: '💕 Obserwuj nas na Facebooku',
-    },
+  {
+    name: 'github',
+    description: '🤖 Sprawdź kod źródłowy bota, zasugeruj swoje zmiany lub zgłoś błąd'
+  },
+  {
+    name: 'numerek',
+    description: '📅 Sprawdź, czy masz dziś szczęście! Wyświetla szczęsliwy numerek'
+  },
+  {
+    name: 'aplikacja',
+    description: '📲 Pobierz aplikację Elektron++ na swój telefon'
+  },
+  {
+    name: 'spolecznosciowy',
+    description: '✨ Dołącz do serwera społecznościowego szkoły'
+  },
+  {
+    name: 'facebook',
+    description: '💕 Obserwuj nas na Facebooku'
+  }
 ]
 
 const replies: {[commandName: string]: Discord.InteractionReplyOptions} = {
   github: {
     content: 'https://github.com/ElektronPlus/discord',
-    ephemeral: true,
+    ephemeral: true
   },
   numerek: {
     content: await getLuckyNumberInfo(),
@@ -49,9 +49,7 @@ const replies: {[commandName: string]: Discord.InteractionReplyOptions} = {
     content: 'https://www.facebook.com/zgelektronik/ & https://www.facebook.com/suelektron/',
     ephemeral: true
   }
-} 
-
-
+}
 
 /**
  * Guild slashCommands are prefered over global ones, as they're dynamic. Global commands are refreshed every 1 hour. In that time, function isn't usable (it gives `Invalid interaction application command` error). Over that, if we would commands.create() every time we run a bot, **same would apply**.
