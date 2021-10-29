@@ -28,26 +28,29 @@ const slashCommands: Discord.ChatInputApplicationCommandData[] = [
   }
 ]
 
-const replies: {[commandName: string]: Discord.InteractionReplyOptions} = {
-  github: {
-    content: 'https://github.com/ElektronPlus/discord',
-    ephemeral: true
-  },
-  numerek: {
-    content: await getLuckyNumberInfo(),
-    ephemeral: true
-  },
-  aplikacja: {
-    content: 'https://play.google.com/store/apps/details?id=pl.krystian_wybranowski.elektronPlus',
-    ephemeral: true
-  },
-  spolecznosciowy: {
-    content: 'https://discord.gg/jrDxSTE',
-    ephemeral: true
-  },
-  facebook: {
-    content: 'https://www.facebook.com/zgelektronik/ & https://www.facebook.com/suelektron/',
-    ephemeral: true
+/** Use function instead of object to allow dynamic content, like lucky number */
+async function getReplies (): Promise<{ [commandName: string]: Discord.InteractionReplyOptions} > {
+  return {
+    github: {
+      content: 'https://github.com/ElektronPlus/discord',
+      ephemeral: true
+    },
+    numerek: {
+      content: await getLuckyNumberInfo(),
+      ephemeral: true
+    },
+    aplikacja: {
+      content: 'https://play.google.com/store/apps/details?id=pl.krystian_wybranowski.elektronPlus',
+      ephemeral: true
+    },
+    spolecznosciowy: {
+      content: 'https://discord.gg/jrDxSTE',
+      ephemeral: true
+    },
+    facebook: {
+      content: 'https://www.facebook.com/zgelektronik/ & https://www.facebook.com/suelektron/',
+      ephemeral: true
+    }
   }
 }
 
@@ -74,6 +77,8 @@ export async function replyToSlashCommand (interaction: Discord.Interaction): Pr
   }
 
   for (const command of slashCommands) {
+    const replies = await getReplies()
+
     if (interaction.commandName === command.name) {
       interaction.reply(replies[command.name])
       log.info(`[${interaction.guild?.name}] Replied to interaction (${interaction.commandName}).`)
