@@ -9,11 +9,12 @@ export const config = {
   token: process.env.DISCORD_TOKEN,
   activity: {
     display: true,
-    interval: 1000000,
+    interval: 100000,
     items: [
-      'historii XX i XXI w.',
-      'wychowania do cnót niewieścich',
-      'katechezy'
+//       'historii XX i XXI w.',
+//       'wychowania do cnót niewieścich',
+//       'katechezy'
+         'Wesołych świąt!
     ]
   },
   triggers: [
