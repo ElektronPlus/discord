@@ -28,5 +28,9 @@ export const config = {
         'popieram **+1**'
       ]
     }
+  ],
+  forbiddenMessages: [
+    'nitro',
+    'steam store'
   ]
 }

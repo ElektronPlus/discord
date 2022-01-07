@@ -3,8 +3,9 @@ import { config } from './config'
 
 import Discord from 'discord.js'
 import { createGuildSlashCommands, replyToSlashCommand } from './core/commands'
-import { replyToTrigger } from './core/triggers'
 import activitySetter from './core/activities'
+import ScamMessageListener from './listeners/ScamMessageListener'
+import { replyToTrigger } from './core/triggers'
 
 const log = createLogger()
 
@@ -21,6 +22,7 @@ client.once('ready', async () => {
 
   /** Create slash commands for every guild. This doesn't create global commands. */
   client.guilds.cache.forEach(async guild => await createGuildSlashCommands(guild))
+  new ScamMessageListener().registerListener(client)
 })
 
 client.on('messageCreate', async (message) => {
