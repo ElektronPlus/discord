@@ -11,10 +11,9 @@ export const config = {
     display: true,
     interval: 100000,
     items: [
-//       'historii XX i XXI w.',
-//       'wychowania do cnót niewieścich',
-//       'katechezy'
-         'Wesołych świąt!
+      'historii XX i XXI w.',
+      'wychowania do cnót niewieścich',
+      'katechezy'
     ]
   },
   triggers: [
