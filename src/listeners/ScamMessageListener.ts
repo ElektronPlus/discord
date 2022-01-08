@@ -8,7 +8,7 @@ const log = createLogger()
 export default class ScamMessageListener implements DiscordListener {
   registerListener (client: Discord.Client): void {
     client.on('messageCreate', async (message) => {
-      if (this.hasForbiddenWords(message.content)) {
+      if (this.hasForbiddenWords(message.content.toLowerCase())) {
         log.info(`Removed ${message.author.id}: ${message.content}`)
         message.delete()
       }

@@ -31,6 +31,7 @@ export const config = {
   ],
   forbiddenMessages: [
     'nitro',
-    'steam store'
+    'steam store',
+    'open the link'
   ]
 }
