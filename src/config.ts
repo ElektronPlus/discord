@@ -1,4 +1,5 @@
 import 'dotenv/config'
+import curseWords from "./json/curseWords.json"
 
 export const api = {
   elektronplus: 'https://elektronplusplus-76445.firebaseio.com/.json'
@@ -33,5 +34,6 @@ export const config = {
     'nitro',
     'steam store',
     'open the link'
-  ]
+  ],
+  curseWords: curseWords
 }

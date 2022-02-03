@@ -6,11 +6,12 @@ import { createGuildSlashCommands, replyToSlashCommand } from './core/commands'
 import activitySetter from './core/activities'
 import ScamMessageListener from './listeners/ScamMessageListener'
 import { replyToTrigger } from './core/triggers'
+import UserPresenceUpdateListener from './listeners/UserPresenceUpdateListener'
 
 const log = createLogger()
 
 const client = new Discord.Client({
-  intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES]
+  intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_PRESENCES]
 })
 
 client.once('ready', async () => {
@@ -23,6 +24,7 @@ client.once('ready', async () => {
   /** Create slash commands for every guild. This doesn't create global commands. */
   client.guilds.cache.forEach(async guild => await createGuildSlashCommands(guild))
   new ScamMessageListener().registerListener(client)
+  new UserPresenceUpdateListener().registerListener(client)
 })
 
 client.on('messageCreate', async (message) => {
