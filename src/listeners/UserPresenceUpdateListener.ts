@@ -12,16 +12,16 @@ export default class UserPresenceUpdateListener implements DiscordListener {
             if (newPresence.activities.length == 0) return;
             if (newPresence.activities[0].type != 'CUSTOM') {
                 if (this.hasCurseWords(newPresence.activities[0].name) || this.hasCurseWords(newPresence.activities[0].state) || this.hasCurseWords(newPresence.activities[0].details)) {
-                    log.info(`Detected curse words in new presence of ${newPresence.user.username}`)
-                    newPresence.user.send("Cześć! Zauważyłem, że masz w swoim statusie konta niecenzuralne słowa. Aby uniknąć problemów, zmień proszę status na inny.\nJeżeli uważasz, że otrzymałeś tę wiadomość przez pomyłkę, skontaktuj się z Administratorem szkolnego Discorda.")
+                    log.info(`Detected curse words in the new presence of ${newPresence.user.username}`)
+                    newPresence.user.send("Cześć! Nasz system zauważył, że masz w swoim statusie konta niecenzuralne słowa. Aby uniknąć problemów, zmień proszę status na inny. Odnotowaliśmy kilka przypadków komisji wychowawczych za niestosowne statusy, więc uprzedzamy, bo nauczyciele czasem lubią sobie poczytać. 🥴\n\nJeżeli uważasz, że otrzymałeś tę wiadomość przez pomyłkę, skontaktuj się z Administratorem szkolnego Discorda.")
                         .catch(err => {
                             if (err.message.includes("Cannot send messages to this user")) log.info(`Cannot send curse word warning to this user: ${newPresence.user.username}`)
                             else log.error(err);
                         });
                 }
             } else if (this.hasCurseWords(newPresence.activities[0].state)) {
-                log.info(`Detected curse words in new presence of ${newPresence.user.username}`)
-                newPresence.user.send("Cześć! Zauważyłem, że masz w swoim statusie konta niecenzuralne słowa. Aby uniknąć problemów, zmień proszę status na inny.\nJeżeli uważasz, że otrzymałeś tę wiadomość przez pomyłkę, skontaktuj się z Administratorem szkolnego Discorda.")
+                log.info(`Detected curse words in the new presence of ${newPresence.user.username}`)
+                newPresence.user.send("Cześć! Nasz system zauważył, że masz w swoim statusie konta niecenzuralne słowa. Aby uniknąć problemów, zmień proszę status na inny. Odnotowaliśmy kilka przypadków komisji wychowawczych za niestosowne statusy, więc uprzedzamy, bo nauczyciele czasem lubią sobie poczytać. 🥴\n\nJeżeli uważasz, że otrzymałeś tę wiadomość przez pomyłkę, skontaktuj się z Administratorem szkolnego Discorda.")
                     .catch(err => {
                         if (err.message.includes("Cannot send messages to this user")) log.info(`Cannot send curse word warning to this user: ${newPresence.user.username}`)
                         else log.error(err);
